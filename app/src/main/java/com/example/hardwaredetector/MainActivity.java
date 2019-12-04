@@ -2,8 +2,15 @@ package com.example.hardwaredetector;
 import java.io.File;
 import java.io.IOException;
 import java.security.Policy;
+import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
@@ -24,6 +31,46 @@ import android.view.View;
 import android.widget.Toast;
 
 
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ViewPager viewPager = findViewById(R.id.viewPager);
+
+        AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
+        pagerAdapter.addFragment(new LoginFragment());
+        pagerAdapter.addFragment(new RegisterFragment());
+        viewPager.setAdapter(pagerAdapter);
+    }
+
+    class AuthenticationPagerAdapter extends FragmentPagerAdapter {
+        private ArrayList<Fragment> fragmentList = new ArrayList<>();
+
+        public AuthenticationPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            return fragmentList.get(i);
+        }
+
+        @Override
+        public int getCount() {
+            return fragmentList.size();
+        }
+
+        void addFragmet(Fragment fragment) {
+            fragmentList.add(fragment);
+        }
+    }
+}
+
+
+/*
 public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback{
 
     SurfaceView surfaceView;
@@ -151,5 +198,5 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             Toast.makeText(this, outputFileUri.toString(),Toast.LENGTH_LONG).show();
         }
 
-    }
-}
+    }*/
+
