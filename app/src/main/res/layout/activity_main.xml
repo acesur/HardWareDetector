@@ -19,12 +19,28 @@
         android:text="Take Photo"
 
         />-->
+<!--
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+-->
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Start Your Journey"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@android:color/white"
+        />
+
+    <LinearLayout
+        android:id="@+id/fragmentContainer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="1000dp"/>
 
 
 </LinearLayout>

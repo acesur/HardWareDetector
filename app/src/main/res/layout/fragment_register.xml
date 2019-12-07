@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".RegisterFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -20,6 +21,7 @@
         android:textAlignment="center"
         android:textSize="50sp"
         android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/indigo_daisy"
         android:layout_marginTop="60dp"/>
@@ -32,6 +34,7 @@
         android:textSize="17sp"
         android:fontFamily="@font/roboto_regular"
         android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginBottom="50dp"/>
 
     <EditText

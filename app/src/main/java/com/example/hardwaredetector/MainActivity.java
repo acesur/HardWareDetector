@@ -5,12 +5,13 @@ import java.security.Policy;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
-
-import android.app.Fragment;
-import android.app.FragmentManager;
 import androidx.fragment.app.FragmentManager;
+//import android.app.FragmentManager;
+
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
@@ -28,17 +29,58 @@ import android.view.Menu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private Button btnStart;
+    private Boolean status = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btnStart = findViewById(R.id.btnStart);
+        btnStart.setOnClickListener(this);
+    }
 
-        ViewPager viewPager = findViewById(R.id.viewPager);
+    @Override
+    public void onClick(View v){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        if (status){
+            LoginFragment loginFragment = new LoginFragment();
+
+            fragmentTransaction.replace(R.id.fragmentContainer,loginFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            btnStart.setText("Register New Account");
+            status=false;
+
+
+
+        }
+        else {
+            RegisterFragment registerFragment = new RegisterFragment();
+            fragmentTransaction.replace(R.id.fragmentContainer,registerFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            btnStart.setText("Login Existing Account");
+            status = true;
+
+        }
+    }
+}
+
+
+
+
+
+     /*   ViewPager viewPager = findViewById(R.id.viewPager);
 
         AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(new LoginFragment());
@@ -68,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
+*/
 
 /*
 public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback{
