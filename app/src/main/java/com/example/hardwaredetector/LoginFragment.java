@@ -54,7 +54,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         String et_Email = et_email.getText().toString();
        String et_Password = et_password.getText().toString();
        if ((et_Email.equals("admin")) && et_Password.equals("admin123")){
-           Intent intent = new Intent(getActivity(),Dashboard.class);
+           Intent intent = new Intent(getActivity(),ViewPagerAdapter.class);
            startActivity(intent);
 
        }
