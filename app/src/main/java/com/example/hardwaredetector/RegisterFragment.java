@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 /**
@@ -19,8 +22,37 @@ import android.view.ViewGroup;
  * Use the {@link RegisterFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RegisterFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
+public class RegisterFragment extends Fragment implements View.OnClickListener{
+
+    Button btn_register;
+    EditText et_name, et_email, et_password,et_rpassword;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_register, container, false);
+
+        et_name = view.findViewById(R.id.et_name);
+        et_email = view.findViewById(R.id.et_email);
+        et_password = view.findViewById(R.id.et_password);
+        et_rpassword = view.findViewById(R.id.et_repassword);
+
+        btn_register = view.findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(this);
+        return view;
+    }
+
+    @Override
+    public void onClick(View v){
+
+        String et_Name = et_name.getText().toString();
+        String et_Email = et_email.getText().toString();
+        String et_Password = et_password.getText().toString();
+        String et_Rpassword = et_rpassword.getText().toString();
+
+        Toast.makeText(getActivity(),"May You keep Us Visiting More Time" , Toast.LENGTH_SHORT).show();
+    }
+
+
+   /* // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -35,14 +67,14 @@ public class RegisterFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
+    *//**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment RegisterFragment.
-     */
+     *//*
     // TODO: Rename and change types and number of parameters
     public static RegisterFragment newInstance(String param1, String param2) {
         RegisterFragment fragment = new RegisterFragment();
@@ -93,7 +125,7 @@ public class RegisterFragment extends Fragment {
         mListener = null;
     }
 
-    /**
+    *//**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
@@ -102,9 +134,9 @@ public class RegisterFragment extends Fragment {
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
-     */
+     *//*
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }*/
     }
-}
